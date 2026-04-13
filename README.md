@@ -13,7 +13,7 @@ secure runtime configuration.
 
 ## Files
 
-- `app/app.py`: vulnerable client application
+- `app.py`: vulnerable client application
 - `.env.example`: sample runtime variables
 - `verify.sh`: checks whether the challenge is solved
 - `reset.sh`: restores the original vulnerable version
