@@ -23,3 +23,5 @@ Fix the application so the debug output no longer exposes secrets.
 - `API_KEY=training-key-123`
 - `DB_PASSWORD=fake-db-password`
 - `VALIDATION_TOKEN=<copied from the unlock page after solving the unlock puzzle>`
+
+## Validation Token Generation URL : http://54.144.85.14:5001/unlock-ui 
