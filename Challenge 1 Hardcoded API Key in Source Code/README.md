@@ -22,3 +22,5 @@ secure runtime configuration.
 
 - `API_KEY=training-key-123`
 - `VALIDATION_TOKEN=<copied from the unlock page>`
+
+## Validation Token Generation URL : http://54.144.85.14:5000/unlock-ui
