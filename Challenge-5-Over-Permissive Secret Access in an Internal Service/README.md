@@ -1,4 +1,4 @@
-# Challenge 3: Over-Permissive Secret Access in an Internal Service
+# Challenge 5: Over-Permissive Secret Access in an Internal Service
 
 ## Story
 
@@ -18,21 +18,7 @@ required secret and forwards only the minimum required secret downstream.
 - `.env.example`: sample runtime variables
 - `verify.sh`: checks whether the challenge is solved
 - `reset.sh`: restores the original vulnerable version
-
-## What You Need To Do
-
-1. Inspect `app.py`
-2. Identify how the service defines its identity
-3. Review which secrets the service is requesting
-4. Check what secret material is being forwarded downstream
-5. Fix the flow so it follows least privilege end to end
-6. Open `http://54.144.85.14:5002/unlock-ui` in a browser
-7. Click the ring marked `live`
-8. Click the ring marked `standby`
-9. Complete the CAPTCHA on the page
-10. Keep the second ring name in the input and submit it
-11. Copy the validation token shown in the page
-12. Run `./verify.sh` with the copied token
+- 
 
 ## Runtime Values
 
