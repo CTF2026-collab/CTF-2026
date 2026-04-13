@@ -1,4 +1,4 @@
-# Challenge 2: Debug Endpoint Exposes Secrets
+# Challenge 3: Debug Endpoint Exposes Secrets
 
 ## Story
 
