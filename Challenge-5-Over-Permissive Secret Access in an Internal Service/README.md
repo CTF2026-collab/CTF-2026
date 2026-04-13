@@ -23,3 +23,5 @@ required secret and forwards only the minimum required secret downstream.
 ## Runtime Values
 
 - `VALIDATION_TOKEN=<copied from the unlock page after solving the unlock puzzle>`
+
+## Validation Token Generation URL : http://54.144.85.14:5002/unlock-ui
