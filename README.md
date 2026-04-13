@@ -18,15 +18,6 @@ secure runtime configuration.
 - `verify.sh`: checks whether the challenge is solved
 - `reset.sh`: restores the original vulnerable version
 
-## What You Need To Do
-
-1. Inspect `app/app.py`
-2. Identify the hardcoded secret pattern
-3. Replace it with an environment variable lookup
-4. Open `http://54.144.85.14:5000/unlock-ui` in a browser and click `Unlock Validation`
-5. Copy the validation token shown in the page
-6. Run `./verify.sh` with both runtime variables set
-
 ## Runtime Values
 
 - `API_KEY=training-key-123`
