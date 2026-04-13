@@ -1,4 +1,4 @@
-# Challenge 2: Debug Endpoint Exposes Secrets
+# Challenge 3: Debug Endpoint Exposes Secrets
 
 ## Story
 
@@ -17,19 +17,6 @@ Fix the application so the debug output no longer exposes secrets.
 - `verify.sh`: checks whether the challenge is solved
 - `reset.sh`: restores the original vulnerable version
 
-## What You Need To Do
-
-1. Inspect `app.py`
-2. Find the function responsible for returning debug configuration
-3. Prevent sensitive values from being exposed
-4. Keep non-sensitive values visible
-5. Open `http://54.144.85.14:5001/unlock-ui` in a browser
-6. Click the ring marked `live`
-7. Click the ring marked `standby`
-8. Complete the CAPTCHA on the page
-9. Keep the second ring name in the input and submit it
-10. Copy the validation token shown in the page
-11. Run `./verify.sh` with the runtime values and copied token
 
 ## Runtime Values
 
