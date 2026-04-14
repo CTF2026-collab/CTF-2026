@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import urllib.error
 import urllib.request
 
@@ -12,11 +13,8 @@ APP_CONFIG = {
     "region": "us-east-1",
     "api_key": os.environ.get("API_KEY"),
     "db_password": os.environ.get("DB_PASSWORD"),
+    "validation_token": os.environ.get("VALIDATION_TOKEN"),
 }
-
-
-def fetch_debug_config() -> dict:
-    return APP_CONFIG
 
 
 def fetch_nonce() -> str:
@@ -25,22 +23,31 @@ def fetch_nonce() -> str:
         return data["nonce"]
 
 
+def fetch_debug_config() -> dict:
+    return {
+        "service_name": APP_CONFIG["service_name"],
+        "region": APP_CONFIG["region"],
+        "api_key": APP_CONFIG["api_key"],
+        "db_password": APP_CONFIG["db_password"],
+    }
+
+
 def main() -> int:
-    validation_token = os.environ.get("VALIDATION_TOKEN")
-    if not validation_token:
-        print("Missing VALIDATION_TOKEN. Open http://54.144.85.14:5001/unlock-ui.")
-        return 1
-
     if not APP_CONFIG["api_key"] or not APP_CONFIG["db_password"]:
-        print("Missing runtime secrets")
+        print("Missing runtime secrets", file=sys.stderr)
         return 1
 
-    debug_config = fetch_debug_config()
+    if not APP_CONFIG["validation_token"]:
+        print(
+            "Missing validation token. Open http://54.144.85.14:5001/unlock-ui and complete the unlock flow.",
+            file=sys.stderr,
+        )
+        return 1
 
     payload = {
-        "debug_config": debug_config,
-        "unlock_token": validation_token,
+        "unlock_token": APP_CONFIG["validation_token"],
         "nonce": fetch_nonce(),
+        "debug_config": fetch_debug_config(),
     }
 
     request = urllib.request.Request(
@@ -55,10 +62,10 @@ def main() -> int:
             print(response.read().decode("utf-8"))
             return 0
     except urllib.error.HTTPError as error:
-        print(error.read().decode("utf-8"))
+        print(error.read().decode("utf-8"), file=sys.stderr)
         return 1
     except urllib.error.URLError as error:
-        print(f"Could not reach validator: {error}")
+        print(f"Could not reach validator: {error}", file=sys.stderr)
         return 2
 
 
