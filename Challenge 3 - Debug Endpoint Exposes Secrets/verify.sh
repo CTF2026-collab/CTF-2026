@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -euo pipefail
 
@@ -5,7 +6,7 @@ challenge_dir="$(cd "$(dirname "$0")" && pwd)"
 app_file="$challenge_dir/app.py"
 
 if [[ -z "${VALIDATION_TOKEN:-}" ]]; then
-  echo "Fail: VALIDATION_TOKEN is missing. Open http://54.144.85.14:5001/unlock-ui and unlock validation first."
+  echo "Fail: VALIDATION_TOKEN is missing. Open http://54.144.85.14:5001/unlock-ui and complete the unlock flow first."
   exit 1
 fi
 
